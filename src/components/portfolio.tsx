@@ -273,7 +273,10 @@ function About() {
         <motion.div {...reveal} transition={{ ...reveal.transition, delay: 0.08 }} className="grid grid-cols-2 gap-4">
           {[['Full-Stack', 'Web & APIs'], ['Mobile', 'Cross-platform + native'], ['AI / NLP', 'Applied intelligence'], ['4', 'Professional experiences']].map(([big, small], i) => (
             <motion.div whileHover={{ y: -5 }} key={small} className={`card p-6 ${i === 2 ? 'col-span-2' : ''}`}>
-              <div className="text-2xl font-semibold sm:text-3xl">{big}</div><div className="muted mt-2 text-sm">{small}</div>
+              <div>
+                <div className="text-2xl font-semibold sm:text-3xl">{big}</div>
+                <div className="muted mt-2 text-sm">{small}</div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -325,15 +328,25 @@ function Experience() {
         <SectionTitle eyebrow="Experience" title="Building across different environments." />
         <div className="relative ml-2 border-l border-[var(--border)] sm:ml-4">
           {experience.map((item, i) => (
-            <motion.article {...reveal} transition={{ ...reveal.transition, delay: i * 0.05 }} key={`${item.company}-${item.year}`} className="relative pb-14 pl-8 sm:pl-12">
-              <span className="absolute -left-[7px] top-2 h-[13px] w-[13px] rounded-full border-2 border-indigo-500 bg-[var(--bg)]" />
-              <div className="grid gap-4 lg:grid-cols-[120px_1fr]">
-                <div className="text-sm font-semibold text-indigo-500">{item.year}</div>
-                <div>
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1"><h3 className="text-xl font-semibold sm:text-2xl">{item.role}</h3><span className="muted">@ {item.company}</span></div>
-                  <p className="muted mt-2 text-sm">{item.period}</p>
-                  <p className="mt-4 text-sm font-medium">{item.stack}</p>
-                  <p className="muted mt-3 max-w-3xl leading-7">{item.detail}</p>
+            <motion.article
+              key={`experience-${item.company}-${item.year}`}
+              {...reveal}
+              transition={{ ...reveal.transition, delay: i * 0.05 }}
+              className="relative pb-14 pl-8 sm:pl-12"
+            >
+              <div className="relative">
+                <span className="absolute -left-[39px] top-2 h-[13px] w-[13px] rounded-full border-2 border-indigo-500 bg-[var(--bg)] sm:-left-[55px]" />
+                <div className="grid gap-4 lg:grid-cols-[120px_1fr]">
+                  <div className="text-sm font-semibold text-indigo-500">{item.year}</div>
+                  <div>
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <h3 className="text-xl font-semibold sm:text-2xl">{item.role}</h3>
+                      <span className="muted">@ {item.company}</span>
+                    </div>
+                    <p className="muted mt-2 text-sm">{item.period}</p>
+                    <p className="mt-4 text-sm font-medium">{item.stack}</p>
+                    <p className="muted mt-3 max-w-3xl leading-7">{item.detail}</p>
+                  </div>
                 </div>
               </div>
             </motion.article>
@@ -351,20 +364,39 @@ function Projects() {
         <SectionTitle eyebrow="Selected work" title="Projects that show how I engineer." copy="A mix of full-stack, mobile, AI and testing work — each chosen to show a different dimension of my experience." />
         <div className="grid gap-5 md:grid-cols-2">
           {projects.map((project, i) => (
-            <motion.article {...reveal} transition={{ ...reveal.transition, delay: i * 0.05 }} whileHover={{ y: -6 }} key={project.title} className={`card group overflow-hidden p-6 sm:p-8 ${project.featured ? 'md:col-span-2 md:grid md:grid-cols-[1fr_.9fr] md:gap-10 lg:p-10' : ''}`}>
-              <div>
-                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-500">{project.label}</p>
-                <h3 className={`${project.featured ? 'text-3xl sm:text-5xl' : 'text-2xl'} font-semibold tracking-tight`}>{project.title}</h3>
-                <p className="muted mt-4 leading-7">{project.description}</p>
-                <div className="mt-6 flex flex-wrap gap-2">{project.stack.map((tech) => <span key={tech} className="rounded-full border border-[var(--border)] px-3 py-1.5 text-xs font-medium">{tech}</span>)}</div>
-                {project.github && <a href={project.github} target="_blank" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold transition group-hover:text-indigo-500">View source <ArrowUpRight size={16} /></a>}
-              </div>
-              {project.featured && (
-                <div className="mt-8 rounded-[24px] border border-[var(--border)] bg-[var(--surface-strong)] p-6 md:mt-0">
-                  <div className="mb-5 flex items-center gap-2 text-sm font-semibold"><BriefcaseBusiness size={17} className="text-indigo-500" /> Core engineering</div>
-                  <div className="grid gap-3">{project.features?.map((feature, idx) => <motion.div whileHover={{ x: 4 }} key={feature} className="flex items-center gap-3 rounded-2xl border border-[var(--border)] px-4 py-3 text-sm"><span className="grid h-6 w-6 place-items-center rounded-full bg-indigo-500/10 text-[11px] font-bold text-indigo-500">{idx + 1}</span>{feature}</motion.div>)}</div>
+            <motion.article
+              key={`project-${project.title}`}
+              {...reveal}
+              transition={{ ...reveal.transition, delay: i * 0.05 }}
+              whileHover={{ y: -6 }}
+              className={`card group overflow-hidden p-6 sm:p-8 ${project.featured ? 'md:col-span-2 lg:p-10' : ''}`}
+            >
+              <div className={project.featured ? "md:grid md:grid-cols-[1fr_.9fr] md:gap-10" : ""}>
+                <div>
+                  <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-500">{project.label}</p>
+                  <h3 className={`${project.featured ? 'text-3xl sm:text-5xl' : 'text-2xl'} font-semibold tracking-tight`}>{project.title}</h3>
+                  <p className="muted mt-4 leading-7">{project.description}</p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {project.stack.map((tech) => (
+                      <span key={`${project.title}-${tech}`} className="rounded-full border border-[var(--border)] px-3 py-1.5 text-xs font-medium">{tech}</span>
+                    ))}
+                  </div>
+                  {project.github && <a href={project.github} target="_blank" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold transition group-hover:text-indigo-500">View source <ArrowUpRight size={16} /></a>}
                 </div>
-              )}
+                {project.featured && (
+                  <div className="mt-8 rounded-[24px] border border-[var(--border)] bg-[var(--surface-strong)] p-6 md:mt-0">
+                    <div className="mb-5 flex items-center gap-2 text-sm font-semibold"><BriefcaseBusiness size={17} className="text-indigo-500" /> Core engineering</div>
+                    <div className="grid gap-3">
+                      {project.features?.map((feature, idx) => (
+                        <motion.div whileHover={{ x: 4 }} key={`${project.title}-${feature}`} className="flex items-center gap-3 rounded-2xl border border-[var(--border)] px-4 py-3 text-sm">
+                          <span className="grid h-6 w-6 place-items-center rounded-full bg-indigo-500/10 text-[11px] font-bold text-indigo-500">{idx + 1}</span>
+                          {feature}
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </motion.article>
           ))}
         </div>
@@ -380,8 +412,18 @@ function Education() {
         <SectionTitle eyebrow="Education" title="The foundation behind the work." />
         <div className="grid gap-4 lg:grid-cols-3">
           {education.map(([period, degree, school], i) => (
-            <motion.article {...reveal} transition={{ ...reveal.transition, delay: i * 0.06 }} whileHover={{ y: -5 }} key={degree} className="card p-6 sm:p-7">
-              <p className="text-sm font-semibold text-indigo-500">{period || 'Baccalaureate'}</p><h3 className="mt-5 text-xl font-semibold">{degree}</h3><p className="muted mt-3 text-sm leading-6">{school}</p>
+            <motion.article
+              key={`education-${degree}`}
+              {...reveal}
+              transition={{ ...reveal.transition, delay: i * 0.06 }}
+              whileHover={{ y: -5 }}
+              className="card p-6 sm:p-7"
+            >
+              <div>
+                <p className="text-sm font-semibold text-indigo-500">{period || 'Baccalaureate'}</p>
+                <h3 className="mt-5 text-xl font-semibold">{degree}</h3>
+                <p className="muted mt-3 text-sm leading-6">{school}</p>
+              </div>
             </motion.article>
           ))}
         </div>
