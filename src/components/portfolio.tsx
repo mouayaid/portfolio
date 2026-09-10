@@ -291,9 +291,24 @@ function Skills() {
           {skillGroups.map((group, i) => {
             const Icon = group.icon;
             return (
-              <motion.article {...reveal} transition={{ ...reveal.transition, delay: i * 0.06 }} whileHover={{ y: -6 }} key={group.title} className={`card p-6 sm:p-7 ${group.featured ? 'lg:col-span-2' : ''} ${group.wide ? 'md:col-span-2 lg:col-span-3' : ''}`}>
-                <div className="mb-7 flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-indigo-500/10 text-indigo-500"><Icon size={19} /></span><h3 className="font-semibold">{group.title}</h3></div>
-                <div className="flex flex-wrap gap-2">{group.skills.map((skill) => <span key={skill} className="rounded-full border border-[var(--border)] bg-[var(--surface-strong)] px-3 py-1.5 text-sm">{skill}</span>)}</div>
+              <motion.article
+                key={`skill-group-${group.title}`}
+                {...reveal}
+                transition={{ ...reveal.transition, delay: i * 0.06 }}
+                whileHover={{ y: -6 }}
+                className={`card p-6 sm:p-7 ${group.featured ? 'lg:col-span-2' : ''} ${group.wide ? 'md:col-span-2 lg:col-span-3' : ''}`}
+              >
+                <div>
+                  <div className="mb-7 flex items-center gap-3">
+                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-indigo-500/10 text-indigo-500"><Icon size={19} /></span>
+                    <h3 className="font-semibold">{group.title}</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {group.skills.map((skill, skillIndex) => (
+                      <span key={`${group.title}-${skill}-${skillIndex}`} className="rounded-full border border-[var(--border)] bg-[var(--surface-strong)] px-3 py-1.5 text-sm">{skill}</span>
+                    ))}
+                  </div>
+                </div>
               </motion.article>
             );
           })}
