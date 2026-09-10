@@ -22,6 +22,8 @@ import {
 import { useEffect, useState } from "react";
 
 const navItems = ["About", "Skills", "Experience", "Projects", "Education", "Contact"];
+const emailAddress = "mouayaidchatti@gmail.com";
+const emailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}`;
 
 const skillGroups = [
   {
@@ -193,7 +195,7 @@ function Navbar() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <a aria-label="GitHub" href="https://github.com/mouayaid" target="_blank" className="hidden h-10 w-10 place-items-center rounded-full border border-[var(--border)] bg-[var(--surface)] transition hover:-translate-y-0.5 sm:grid"><Github size={18} /></a>
+          <a aria-label="GitHub" href="https://github.com/mouayaid" target="_blank" rel="noreferrer" className="hidden h-10 w-10 place-items-center rounded-full border border-[var(--border)] bg-[var(--surface)] transition hover:-translate-y-0.5 sm:grid"><Github size={18} /></a>
           <ThemeToggle />
           <button onClick={() => setOpen(!open)} className="grid h-10 w-10 place-items-center rounded-full border border-[var(--border)] bg-[var(--surface)] md:hidden" aria-label="Open menu">{open ? <X size={19} /> : <Menu size={19} />}</button>
         </div>
@@ -223,11 +225,11 @@ function Hero() {
           <motion.p initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28, duration: 0.7 }} className="muted mt-7 max-w-2xl text-lg leading-8">I build modern applications combining scalable backend systems, responsive interfaces, real-time features and intelligent technologies.</motion.p>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.65 }} className="mt-9 flex flex-wrap gap-3">
             <a href="#projects" className="inline-flex items-center gap-2 rounded-full bg-[var(--text)] px-6 py-3 text-sm font-semibold text-[var(--bg)] transition hover:-translate-y-1">View my work <ArrowDown size={16} /></a>
-            <a href="mailto:mouayaidchatti@gmail.com" className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-6 py-3 text-sm font-semibold transition hover:-translate-y-1">Contact me <ArrowUpRight size={16} /></a>
+            <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-6 py-3 text-sm font-semibold transition hover:-translate-y-1">Contact me <ArrowDown size={16} /></a>
           </motion.div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.55 }} className="muted mt-8 flex gap-5 text-sm">
-            <a className="transition hover:text-[var(--text)]" href="https://github.com/mouayaid" target="_blank">GitHub ↗</a>
-            <a className="transition hover:text-[var(--text)]" href="mailto:mouayaidchatti@gmail.com">Email ↗</a>
+            <a className="transition hover:text-[var(--text)]" href="https://github.com/mouayaid" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a className="transition hover:text-[var(--text)]" href={emailComposeUrl} target="_blank" rel="noreferrer">Email ↗</a>
           </motion.div>
         </div>
         <motion.div initial={{ opacity: 0, scale: 0.94, y: 30 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ delay: 0.25, duration: 0.8 }} className="relative mx-auto w-full max-w-lg">
@@ -381,7 +383,7 @@ function Projects() {
                       <span key={`${project.title}-${tech}`} className="rounded-full border border-[var(--border)] px-3 py-1.5 text-xs font-medium">{tech}</span>
                     ))}
                   </div>
-                  {project.github && <a href={project.github} target="_blank" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold transition group-hover:text-indigo-500">View source <ArrowUpRight size={16} /></a>}
+                  {project.github && <a href={project.github} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold transition group-hover:text-indigo-500">View source <ArrowUpRight size={16} /></a>}
                 </div>
                 {project.featured && (
                   <div className="mt-8 rounded-[24px] border border-[var(--border)] bg-[var(--surface-strong)] p-6 md:mt-0">
@@ -443,9 +445,9 @@ function Contact() {
         <h2 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-6xl">Have an opportunity or project in mind? <span className="gradient-text">Let&apos;s talk.</span></h2>
         <p className="muted mt-6 max-w-2xl text-lg leading-8">I&apos;m open to software engineering opportunities, collaborations and conversations about interesting products.</p>
         <div className="mt-9 flex flex-wrap gap-3">
-          <a href="mailto:mouayaidchatti@gmail.com" className="inline-flex items-center gap-2 rounded-full bg-[var(--text)] px-6 py-3 text-sm font-semibold text-[var(--bg)] transition hover:-translate-y-1"><Mail size={17} /> Email me</a>
-          <a href="https://github.com/mouayaid" target="_blank" className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 text-sm font-semibold transition hover:-translate-y-1"><Github size={17} /> GitHub</a>
-          <a href="#" className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 text-sm font-semibold transition hover:-translate-y-1"><Linkedin size={17} /> LinkedIn</a>
+          <a href={emailComposeUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[var(--text)] px-6 py-3 text-sm font-semibold text-[var(--bg)] transition hover:-translate-y-1"><Mail size={17} /> Email me</a>
+          <a href="https://github.com/mouayaid" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 text-sm font-semibold transition hover:-translate-y-1"><Github size={17} /> GitHub</a>
+          <a href="#" aria-disabled="true" title="LinkedIn URL needed" className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 text-sm font-semibold opacity-50"><Linkedin size={17} /> LinkedIn</a>
         </div>
       </motion.div>
     </section>
