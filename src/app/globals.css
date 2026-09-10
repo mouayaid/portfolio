@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 :root {
+  --font-geist-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-geist-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   --bg: #f8f9fb;
   --surface: rgba(255, 255, 255, 0.76);
   --surface-strong: #ffffff;
@@ -54,15 +56,13 @@ a {
   text-decoration: none;
 }
 
-#home a[href="#projects"],
-#contact a[href^="mailto:"] {
+.btn-primary {
   background: linear-gradient(100deg, #2563eb 0%, #7c3aed 100%);
   color: #ffffff;
   box-shadow: 0 10px 30px rgba(79, 70, 229, 0.22);
 }
 
-#home a[href="#projects"]:hover,
-#contact a[href^="mailto:"]:hover {
+.btn-primary:hover {
   box-shadow: 0 14px 36px rgba(79, 70, 229, 0.3);
 }
 
