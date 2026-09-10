@@ -11,7 +11,7 @@ export function Projects() {
         <SectionTitle
           eyebrow="Selected work"
           title="Projects that show how I engineer."
-          copy="A mix of full-stack, mobile, AI and testing work - each chosen to show a different dimension of my experience."
+          copy="A mix of full-stack, mobile, AI and testing work — each chosen to show a different dimension of my experience."
         />
         <div className="grid gap-5 md:grid-cols-2">
           {projects.map((project, index) => (

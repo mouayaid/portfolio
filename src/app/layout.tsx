@@ -3,7 +3,6 @@ import { Providers } from "@/components/providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"),
   title: {
     default: "Mouayaid Zammit Chatti | Software Engineer",
     template: "%s | Mouayaid Zammit Chatti",

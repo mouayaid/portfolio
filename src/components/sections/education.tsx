@@ -24,7 +24,7 @@ export function Education() {
         <Reveal className="card mt-5 flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-7">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-500">Additional training</p>
-            <p className="muted mt-2">AWS Academy Cloud Foundations / React - The Complete Guide</p>
+            <p className="muted mt-2">AWS Academy Cloud Foundations · React — The Complete Guide</p>
           </div>
           <span className="rounded-full border border-[var(--border)] px-4 py-2 text-xs font-semibold">Continuous learning</span>
         </Reveal>

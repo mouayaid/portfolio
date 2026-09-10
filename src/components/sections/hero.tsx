@@ -31,7 +31,7 @@ export function Hero() {
             transition={{ delay: 0.08, duration: 0.65 }}
             className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-indigo-500"
           >
-            Hi, I&apos;m Mouayaid
+            Hi, I’m Mouayaid 👋
           </motion.p>
           <motion.h1
             initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
@@ -39,7 +39,7 @@ export function Hero() {
             transition={{ delay: 0.16, duration: 0.7 }}
             className="max-w-4xl text-5xl font-semibold leading-[0.98] tracking-tight sm:text-7xl lg:text-8xl"
           >
-            Software Engineer<span className="gradient-text block">Full-Stack / Mobile / AI</span>
+            Software Engineer<span className="gradient-text block">Full-Stack · Mobile · AI</span>
           </motion.h1>
           <motion.p
             initial={prefersReducedMotion ? false : { opacity: 0, y: 28 }}
@@ -68,9 +68,9 @@ export function Hero() {
             transition={{ delay: 0.55 }}
             className="muted mt-8 flex gap-5 text-sm"
           >
-            <a className="transition hover:text-[var(--text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500" href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub -&gt;</a>
-            <a className="transition hover:text-[var(--text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500" href={linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn -&gt;</a>
-            <a className="transition hover:text-[var(--text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500" href={emailComposeUrl}>Email -&gt;</a>
+            <a className="transition hover:text-[var(--text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500" href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a className="transition hover:text-[var(--text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500" href={linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a className="transition hover:text-[var(--text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500" href={emailComposeUrl}>Email ↗</a>
           </motion.div>
         </div>
         <motion.div
@@ -90,7 +90,7 @@ export function Hero() {
             </div>
             <div className="mt-10 font-mono text-sm leading-7">
               <p className="muted">const engineer = &#123;</p>
-              <p className="pl-5"><span className="text-indigo-500">name:</span> &quot;Zammit Chatti Mouayaid&quot;,</p>
+              <p className="pl-5"><span className="text-indigo-500">name:</span> &quot;Mouayaid&quot;,</p>
               <p className="pl-5"><span className="text-indigo-500">focus:</span> [&quot;Full-Stack&quot;, &quot;Mobile&quot;, &quot;AI&quot;],</p>
               <p className="pl-5"><span className="text-indigo-500">mindset:</span> &quot;build, test, improve&quot;</p>
               <p className="muted">&#125;;</p>

@@ -9,7 +9,7 @@ export function Skills() {
         <SectionTitle
           eyebrow="Skills"
           title="A versatile engineering toolkit."
-          copy="Technologies grouped by how I use them to build products - not by arbitrary percentage bars."
+          copy="Technologies grouped by how I use them to build products — not by arbitrary percentage bars."
         />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group, index) => {
