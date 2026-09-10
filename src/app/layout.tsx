@@ -1,21 +1,38 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Providers } from "@/components/providers";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Mouayaid Zammit Chatti | Software Engineer",
+  metadataBase: new URL("http://localhost:3000"),
+  title: {
+    default: "Mouayaid Zammit Chatti | Software Engineer",
+    template: "%s | Mouayaid Zammit Chatti",
+  },
   description:
     "Software Engineer portfolio focused on full-stack, mobile and AI-powered applications.",
+  applicationName: "Mouayaid Zammit Chatti Portfolio",
+  authors: [{ name: "Mouayaid Zammit Chatti" }],
+  creator: "Mouayaid Zammit Chatti",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: "/icon.svg",
+  },
+  openGraph: {
+    title: "Mouayaid Zammit Chatti | Software Engineer",
+    description:
+      "Portfolio focused on full-stack, mobile and AI-powered applications.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    title: "Mouayaid Zammit Chatti | Software Engineer",
+    description:
+      "Portfolio focused on full-stack, mobile and AI-powered applications.",
+  },
 };
 
 export default function RootLayout({
@@ -25,11 +42,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable}`}
-      >
-        {children}
+      <body suppressHydrationWarning>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
