@@ -24,6 +24,7 @@ import { useEffect, useState } from "react";
 const navItems = ["About", "Skills", "Experience", "Projects", "Education", "Contact"];
 const emailAddress = "mouayaidchatti@gmail.com";
 const emailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}`;
+const linkedinUrl = "https://www.linkedin.com/in/zammit-chatti-mouayaid-8b3649203/";
 
 const skillGroups = [
   {
@@ -196,6 +197,7 @@ function Navbar() {
         </nav>
         <div className="flex items-center gap-2">
           <a aria-label="GitHub" href="https://github.com/mouayaid" target="_blank" rel="noreferrer" className="hidden h-10 w-10 place-items-center rounded-full border border-[var(--border)] bg-[var(--surface)] transition hover:-translate-y-0.5 sm:grid"><Github size={18} /></a>
+          <a aria-label="LinkedIn" href={linkedinUrl} target="_blank" rel="noreferrer" className="hidden h-10 w-10 place-items-center rounded-full border border-[var(--border)] bg-[var(--surface)] transition hover:-translate-y-0.5 sm:grid"><Linkedin size={18} /></a>
           <ThemeToggle />
           <button onClick={() => setOpen(!open)} className="grid h-10 w-10 place-items-center rounded-full border border-[var(--border)] bg-[var(--surface)] md:hidden" aria-label="Open menu">{open ? <X size={19} /> : <Menu size={19} />}</button>
         </div>
@@ -229,6 +231,7 @@ function Hero() {
           </motion.div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.55 }} className="muted mt-8 flex gap-5 text-sm">
             <a className="transition hover:text-[var(--text)]" href="https://github.com/mouayaid" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a className="transition hover:text-[var(--text)]" href={linkedinUrl} target="_blank" rel="noreferrer">LinkedIn ↗</a>
             <a className="transition hover:text-[var(--text)]" href={emailComposeUrl} target="_blank" rel="noreferrer">Email ↗</a>
           </motion.div>
         </div>
@@ -447,7 +450,7 @@ function Contact() {
         <div className="mt-9 flex flex-wrap gap-3">
           <a href={emailComposeUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[var(--text)] px-6 py-3 text-sm font-semibold text-[var(--bg)] transition hover:-translate-y-1"><Mail size={17} /> Email me</a>
           <a href="https://github.com/mouayaid" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 text-sm font-semibold transition hover:-translate-y-1"><Github size={17} /> GitHub</a>
-          <a href="#" aria-disabled="true" title="LinkedIn URL needed" className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 text-sm font-semibold opacity-50"><Linkedin size={17} /> LinkedIn</a>
+          <a href={linkedinUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 text-sm font-semibold transition hover:-translate-y-1"><Linkedin size={17} /> LinkedIn</a>
         </div>
       </motion.div>
     </section>
