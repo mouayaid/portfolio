@@ -31,9 +31,7 @@ export function Navbar() {
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-        if (visible?.target.id) {
-          setActiveHref(`#${visible.target.id}`);
-        }
+        if (visible?.target.id) setActiveHref(`#${visible.target.id}`);
       },
       { rootMargin: "-28% 0px -55% 0px", threshold: [0.1, 0.35, 0.6] },
     );
@@ -47,32 +45,36 @@ export function Navbar() {
       animate={{ y: 0 }}
       initial={{ y: -80 }}
       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed left-1/2 top-4 z-50 w-[min(1120px,calc(100%-24px))] -translate-x-1/2 rounded-2xl transition-all duration-300 ${
-        scrolled ? "glass px-4 py-2" : "px-2 py-3"
+      className={`material-nav fixed left-1/2 top-4 z-50 w-[min(1120px,calc(100%-24px))] -translate-x-1/2 transition-all duration-300 ${
+        scrolled ? "glass px-4 py-2" : "bg-[var(--surface)]/80 px-3 py-2.5 backdrop-blur-xl"
       }`}
     >
       <div className="flex items-center justify-between">
         <a
           href="#home"
-          className="text-lg font-semibold tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500"
+          className="rounded-full px-2 py-1 text-lg font-semibold tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500"
           aria-current={activeHref === "#home" ? "page" : undefined}
         >
-          Mouayaid<span className="text-indigo-500">.</span>
+          Mouayaid<span className="text-[var(--primary)]">.</span>
         </a>
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary navigation">
+
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary navigation">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               aria-current={activeHref === item.href ? "page" : undefined}
-              className={`text-sm font-medium transition hover:text-[var(--text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500 ${
-                activeHref === item.href ? "text-[var(--text)]" : "muted"
+              className={`rounded-full px-3 py-2 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 ${
+                activeHref === item.href
+                  ? "bg-[var(--primary-container)] text-[var(--on-primary-container)]"
+                  : "muted hover:bg-[var(--surface-container)] hover:text-[var(--text)]"
               }`}
             >
               {item.label}
             </a>
           ))}
         </nav>
+
         <div className="flex items-center gap-2">
           <ButtonLink aria-label="GitHub" href={githubUrl} target="_blank" variant="ghost-icon" className="hidden sm:grid">
             <Github size={18} />
@@ -93,12 +95,13 @@ export function Navbar() {
           </button>
         </div>
       </div>
+
       {open ? (
         <motion.nav
           id={menuId}
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-4 grid gap-1 border-t border-[var(--border)] pt-3 md:hidden"
+          className="mt-3 grid gap-1 border-t border-[var(--border)] pt-3 md:hidden"
           aria-label="Mobile navigation"
         >
           {navItems.map((item) => (
@@ -107,7 +110,7 @@ export function Navbar() {
               href={item.href}
               onClick={() => setOpen(false)}
               aria-current={activeHref === item.href ? "page" : undefined}
-              className="rounded-xl px-3 py-3 text-sm font-medium hover:bg-[var(--surface)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+              className="rounded-2xl px-3 py-3 text-sm font-medium hover:bg-[var(--surface-container)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
             >
               {item.label}
             </a>
