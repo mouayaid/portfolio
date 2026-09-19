@@ -10,6 +10,6 @@ export const navItems: NavItem[] = [
 ];
 
 export const emailAddress = "mouayaidchatti@gmail.com";
-export const emailComposeUrl = `mailto:${emailAddress}`;
+export const emailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}`;
 export const githubUrl = "https://github.com/mouayaid";
 export const linkedinUrl = "https://www.linkedin.com/in/zammit-chatti-mouayaid-8b3649203/";
