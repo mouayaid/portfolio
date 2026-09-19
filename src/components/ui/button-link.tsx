@@ -30,7 +30,7 @@ export function ButtonLink({
 
   return (
     <a
-      className={`${variants[variant] ${className ?? "" }`.trim()}
+      className={`${variants[variant]} ${className ?? ""}`.trim()}
       target={target}
       rel={safeRel}
       {...props}
